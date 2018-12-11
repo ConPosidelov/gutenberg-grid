@@ -94,7 +94,7 @@ const edit = class BootstrapGrid extends Component {
     },
     isVisibleGridTemplate: true,
     isVisibleDeckControls: true,
-    bbbClick: false
+    
   }
   
 
@@ -217,16 +217,6 @@ const edit = class BootstrapGrid extends Component {
     this.nodeRef = node;
   }
 
-
-  bbbClickFn = () => {
-    const {bbbClick} =this.state;
-    console.log(' bbbClick', bbbClick);
-    this.setState({
-      bbbClick: !bbbClick
-    });
-
-  }
-
   gridList1 = () => {
     console.log(' gridList1');
    
@@ -249,7 +239,7 @@ const edit = class BootstrapGrid extends Component {
   }
 
    gridList2 = () => {
-    console.log(' gridList1');
+    console.log(' gridList2');
    
     return <InnerBlocks
           template={ 
@@ -270,20 +260,16 @@ const edit = class BootstrapGrid extends Component {
   }
 
 
-
-
-
-
-   gridList = () => {
-        console.log('gridList');
-        return(
-        <InnerBlocks
-          template={ this.getTemplate() }
-          templateLock="all"
-          allowedBlocks={ ALLOWED_BLOCKS }
-        />
-        )
-      }
+  gridList = () => {
+    console.log('gridList');
+    return(
+      <InnerBlocks
+        template={ this.getTemplate() }
+        templateLock="all"
+        allowedBlocks={ ALLOWED_BLOCKS }
+      />
+    )
+  }
 
 
 
@@ -310,23 +296,11 @@ const edit = class BootstrapGrid extends Component {
 
     let rowsNumber = rows.length;
         
-    let gridList, grid;
+    let grid;
 
     console.log('render -this.state', this.state);
 
     if(rowsNumber) {
-      /*
-      gridList = () => {
-        console.log('gridList');
-        return(
-        <InnerBlocks
-          template={ this.getTemplate() }
-          templateLock="all"
-          allowedBlocks={ ALLOWED_BLOCKS }
-        />
-        )
-      };
-      */
       grid = (
         <div className={`my_layout ${layout}`}>{
           isVisibleGridTemplate ?  this.gridList1()
@@ -336,8 +310,7 @@ const edit = class BootstrapGrid extends Component {
         }</div>
       );
     }
-    
-     
+         
 
 
     return (
@@ -345,14 +318,6 @@ const edit = class BootstrapGrid extends Component {
         { rowsNumber && (
           <div className={className} ref={this.bindRef}>
             {grid}
-
-            <Button 
-              isDefault 
-              className="bbb"
-              onClick={this.bbbClickFn}
-            >
-              Change
-            </Button>  
 
             <div 
               className={ classnames('grid-template', { visible: isVisibleGridTemplate }) }
@@ -398,67 +363,29 @@ const edit = class BootstrapGrid extends Component {
 
             <InspectorControls>
                 
-                <PanelBody
-                  className="editor-panel__grid-template-set"
-                  title={__('All settings')}
-                  initialOpen={ false }
-                >
-                  <PanelRow>
-                    <CheckboxControl
-                      label="Show grid template"
-                      checked={ isVisibleGridTemplate }
-                      onChange={ () => this.toggelGridTemplate()  }
-                    />
-                  </PanelRow>
-                  <PanelRow>    
-                    <CheckboxControl
-                      label="Show deck controls"
-                      checked={ isVisibleDeckControls }
-                      onChange={ () => this.toggelDeckControls()  }
-                    />
-                  </PanelRow>
+              <PanelBody
+                className="editor-panel__grid-template-set"
+                title={__('All settings')}
+                initialOpen={ false }
+              >
+                <PanelRow>
+                  <CheckboxControl
+                    label="Show grid template"
+                    checked={ isVisibleGridTemplate }
+                    onChange={ () => this.toggelGridTemplate() }
+                  />
+                </PanelRow>
+                <PanelRow>    
+                  <CheckboxControl
+                    label="Show deck controls"
+                    checked={ isVisibleDeckControls }
+                    onChange={ () => this.toggelDeckControls() }
+                  />
+                </PanelRow>
 
-                </PanelBody>
+              </PanelBody>
 
-                {this.renderRowConrols()}
-
-                {/*
-                <PanelBody
-                  className="editor-panel_row-control"
-                  title={"Row - 1"}
-                  initialOpen={ true }
-                >
-                  <div className={'ps-editor-panel_row'}>
-                    <RangeControl
-                      label={(
-                        <div className={'ps-editor-panel_row-label'}>
-                        <span>Col-1</span>
-                        <span><Dashicon icon="trash" /></span>
-                        </div>
-                      )}
-                      value={ this.state.colWidth }
-                      onChange={ (val) => this.setColumnsWidth(val) }
-                      scale={{scaleMin: 1, scaleMax: 6}} 
-                      trackFill={true} 
-                      min={ 1 }
-                      max={ 6 }
-                    />
-                  </div>
-
-                  <div 
-                    title={'Add column'}
-                    className={'ps-editor-panel_add-column'}
-                    onClick={() => null}
-                  > 
-                    <Button isDefault>
-                      Add column
-                    </Button>                 
-                  </div>
-
-                </PanelBody>
-
-                */}
-
+              {this.renderRowConrols()}
                      
             </InspectorControls>
           </div>
