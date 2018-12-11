@@ -198,7 +198,7 @@ const edit = class BootstrapGrid extends Component {
 
   dryState = (key, obj) => {
     const {currentState} = this.state;
-    //console.log('this.state-dry =', this.state);
+    
     if(!currentState[key]) currentState[key] = {};
     currentState[key] = { ...currentState[key], ...obj };
 
@@ -238,26 +238,7 @@ const edit = class BootstrapGrid extends Component {
         />
   }
 
-   gridList2 = () => {
-    console.log(' gridList2');
-   
-    return <InnerBlocks
-          template={ 
-            [
-              [
-                'gc-custom/bootstrap-grid-row-block', 
-                {ddd: 'ffff2' }, 
-                [
-                  
-                ] 
-              ]
-            ]
-
-           }
-          templateLock="all"
-          allowedBlocks={ ALLOWED_BLOCKS }
-        />
-  }
+  
 
 
   gridList = () => {
@@ -305,7 +286,7 @@ const edit = class BootstrapGrid extends Component {
         <div className={`my_layout ${layout}`}>{
           isVisibleGridTemplate ?  this.gridList1()
           :
-          this.gridList2()
+          this.gridList()
 
         }</div>
       );
