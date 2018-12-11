@@ -198,7 +198,7 @@ const edit = class BootstrapGrid extends Component {
 
   dryState = (key, obj) => {
     const {currentState} = this.state;
-    //console.log('this.state-dry =', this.state);
+    
     if(!currentState[key]) currentState[key] = {};
     currentState[key] = { ...currentState[key], ...obj };
 
