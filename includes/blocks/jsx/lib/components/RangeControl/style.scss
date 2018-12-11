@@ -1,0 +1,164 @@
+@import './../../../../scss/basic/_colors.scss';
+@import './../../../../scss/basic/_mixins.scss';
+//@import './../../../../scss/basic/_variables.scss';
+
+@mixin range-thumb() {
+  height: 13px;
+  width: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  background: $dark-gray-100;
+  //border: 4px solid transparent;
+  border: 1px solid $dark-gray-500;
+  background-clip: padding-box;
+  box-sizing: border-box;
+}
+
+@mixin range-track() {
+  height: 3px;
+  cursor: pointer;
+  background: rgba(#e2e4e7, 0.5);
+  border-radius: 1.5px;
+}
+
+
+
+.ps_components-range-control {
+
+  width: 100%;
+  position: relative;
+  margin-top: 15px;
+
+  .components-base-control__label{
+    width: 100%;
+    position: absolute;
+    top: -30px;
+    left: 0;
+  }
+
+
+  .ps_components-range-control__slider{
+    position: absolute;
+    z-index: 20;
+    top: 0;
+    left: 0;
+    width: 100%;
+
+    padding: 0;
+    -webkit-appearance: none;
+    background: transparent;
+
+    /**
+   * Thumb
+   */
+
+    // webkit
+    &::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      @include range-thumb();
+      margin-top: -5px; // necessary for chrome
+    }
+
+    // moz
+    &::-moz-range-thumb {
+      @include range-thumb();
+    }
+    // ie
+    &::-ms-thumb {
+      @include range-thumb();
+      margin-top: 0;  // necessary because edge inherits from chrome
+      height: 14px;
+      width: 14px;
+      border: 2px solid transparent;
+    }
+
+    &:focus {
+      outline: none;
+    }
+
+    // webkit
+    &:focus::-webkit-slider-thumb {
+      @include button-style__focus-active;
+    }
+
+    // moz
+    &:focus::-moz-range-thumb {
+      @include button-style__focus-active;
+    }
+
+    // ie
+    &:focus::-ms-thumb {
+      @include button-style__focus-active;
+    }
+
+    /**
+   * Track
+   */
+
+    // webkit
+    &::-webkit-slider-runnable-track {
+      @include range-track();
+      margin-top: -4px;
+    }
+
+    // moz
+    &::-moz-range-track {
+      @include range-track();
+    }
+
+    // ie
+    &::-ms-track {
+      margin-top: -4px;
+      background: transparent;
+      border-color: transparent;
+      color: transparent;
+      @include range-track();
+    }
+      
+  }
+
+  .slider_scale {
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+
+    .slider_scale-divisions{
+      position: relative;
+      float: left;
+      height: 6px;
+      border-right: 1px solid $dark-gray-300;
+      
+      &:first-child {
+        border-left: 1px solid $dark-gray-300;
+      }
+
+
+      //background-color: #757575;
+      .slider_scale-before-first-point{
+        position: absolute;
+        top: 10px;
+        left: -5px;
+      }
+      .slider_scale-after-point{
+        position: absolute;
+        top: 10px;
+        right: -5px;
+      }
+    }
+  }
+
+  .slider_extra-track {
+    //width: 50%;
+    position: absolute;
+    z-index: 10;
+    top: -2px;
+    left: 0;
+    height: 3px;
+    background-color: #00FF7F;
+  }
+
+
+
+
+}

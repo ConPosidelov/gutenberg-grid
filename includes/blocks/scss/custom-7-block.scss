@@ -1,0 +1,255 @@
+
+/*
+.wp-block-gc-custom6-block {
+  background: rgb(8, 200, 131);
+}
+*/
+@import './basic/_colors.scss';
+@import './basic/_variables.scss';
+
+
+
+
+$blocks-button__height: 56px;
+
+
+.wp-block-gc-custom6-block {
+  //background: #FDF5E6;
+  padding-top: 20px;
+  padding-bottom: 50px;
+  //border: 1px solid #000;
+  width: 100%;
+  height: auto;
+}
+
+.my-block-button__list{
+  //background: #FFDAB9;
+  
+  //margin-top: 20px;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  //border: 1px solid #000;
+  width: 100%;
+}
+
+.my-block-button__item {
+  position: relative;
+  margin-bottom: 30px;
+  height: 60px;
+  //width: 90%;
+}
+
+.my-block-button__sortable-handle {
+  width: 40px;
+  float: left;
+  display: block;
+  height: 100%;
+  background: #FFDAB9;
+  margin-right: 10px;
+}
+
+.editor-rich-text {
+  float: left;
+  height: 100%;
+  width: 200px;
+}
+
+.my-block-button__remove-item{
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-size: 18px;
+  line-height: 15px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border:1px solid #000;
+  text-align: center;
+  cursor: pointer;
+  &:hover {
+    border:1px solid red;
+    color: red;
+  }
+}
+
+.my-block-button__add-item{
+  position: absolute;
+  bottom: 5px;
+  right: 5px;
+  margin-right: 20px;
+  //height: 30px;
+  //width: 50px;
+  padding: 0px 10px;
+  border-radius: 5px;
+  border:1px solid #000;
+  cursor: pointer;
+  &:hover {
+    border:1px solid red;
+    color: red;
+  }
+}
+
+
+.wp-block-button {
+  color: $white;
+  margin-bottom: 1.5em;
+
+  &.aligncenter {
+    text-align: center;
+  }
+
+  &.alignright {
+    /*rtl:ignore*/
+    text-align: right;
+  }
+}
+
+.my-block-button__link {
+  //background-color: $dark-gray-700;
+  //float: left;
+  background-color: $light-gray-300;
+  border: none;
+  border-radius: $blocks-button__height / 2;
+  box-shadow: none;
+  color: inherit;
+  cursor: pointer;
+  display: inline-block;
+  font-size: $big-font-size;
+  margin: 0;
+
+  padding: 12px 24px;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: break-word;
+
+  //width: 300px;
+  &:hover,
+  &:focus,
+  &:active {
+    color: inherit;
+  }
+  &.editor-rich-text__tinymce{
+
+  }
+}
+
+.is-style-squared .wp-block-button__link {
+  border-radius: 0;
+}
+
+.is-style-outline {
+  color: $dark-gray-700;
+
+  .my-block-button__link {
+    background: transparent;
+    border: 2px solid currentcolor;
+  }
+}
+
+
+
+
+.editor-block-list__block[data-type="core/button"] {
+  &[data-align="center"] {
+    text-align: center;
+  }
+
+  &[data-align="right"] {
+    /*!rtl:ignore*/
+    text-align: right;
+  }
+}
+
+.wp-block-button {
+  display: inline-block;
+  margin-bottom: 0;
+  position: relative;
+
+  .editor-rich-text__tinymce.mce-content-body {
+    cursor: text;
+  }
+
+  // Make placeholder text white unless custom colors or outline versions are chosen.
+  &:not(.has-text-color):not(.is-style-outline) .editor-rich-text__tinymce[data-is-placeholder-visible="true"] + .editor-rich-text__tinymce {
+    color: $white;
+  }
+
+  // Increase placeholder opacity to meet contrast ratios.
+  .editor-rich-text__tinymce[data-is-placeholder-visible="true"] + .editor-rich-text__tinymce {
+    opacity: 0.8;
+  }
+
+  // Don't let the placeholder text wrap in the variation preview.
+  .editor-block-preview__content & {
+    max-width: 100%;
+
+    // Polish the empty placeholder text for the button in variation previews.
+    .editor-rich-text__tinymce[data-is-placeholder-visible="true"] {
+      height: auto;
+    }
+
+    .my-block-button__link {
+      max-width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+.block-my-button__inline-link {
+  background: $white;
+  //display: flex;
+  //flex-wrap: wrap;
+ // align-items: center;
+  font-family: $default-font;
+  font-size: $default-font-size;
+  line-height: $default-line-height;
+
+  // The width of input box plus padding plus two icon buttons.
+  $blocks-button__link-input-width: 300px + 2px + 2 * $icon-button-size;
+  //width: $blocks-button__link-input-width;
+  width: 100%;
+
+
+  .editor-url-input {
+    width: 100%;
+  }
+
+  .editor-url-input__suggestions {
+    width: $blocks-button__link-input-width - $icon-button-size - $icon-button-size;
+    z-index: z-index(".block-library-button__inline-link .editor-url-input__suggestions");
+  }
+
+  > .dashicon {
+    width: $icon-button-size;
+  }
+
+  .dashicon {
+    color: $dark-gray-100;
+  }
+
+  .editor-url-input input[type="text"]::placeholder {
+    color: $dark-gray-100;
+    width: 100%;
+  }
+
+  [data-align="center"] & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  [data-align="right"] & {
+    margin-left: auto;
+    margin-right: 0;
+  }
+}
+
+.editor-panel-link-settings.components-panel{
+  border: none;
+}
+
+.block-my-button__inline-link .editor-url-input input{
+  width: 100%;
+}
